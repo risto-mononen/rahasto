@@ -100,7 +100,7 @@ from django.db import models
 #         managed = False
 #         db_table = 'django_session'
 
-class Hedgerahastot(models.Model):
+class RahastotBase(models.Model):
     rahasto = models.CharField(max_length=255, blank=True)
     rating = models.CharField(max_length=255, blank=True)
     valuutta = models.CharField(max_length=255, blank=True)
@@ -111,8 +111,25 @@ class Hedgerahastot(models.Model):
     v1 = models.DecimalField(max_digits=21, decimal_places=4, blank=True, null=True)
     v3 = models.DecimalField(max_digits=21, decimal_places=4, blank=True, null=True)
     pvm = models.CharField(max_length=255, blank=True)
+    def __unicode__(self):
+        return unicode(self.id)
+
+class Hedgerahastot(RahastotBase):
     class Meta:
         db_table = 'Hedgerahastot'
-    def __unicode__(self):
-        return self.rahasto
 
+class Korkorahastot(RahastotBase):
+    class Meta:
+        db_table = 'Korkorahastot'
+
+class Osakerahastot(RahastotBase):
+    class Meta:
+        db_table = 'Osakerahastot'
+
+class Yhdistelmarahastot(RahastotBase):
+    class Meta:
+        db_table = 'Yhdistelmarahastot'
+
+class Luokittelemattomat(RahastotBase):
+    class Meta:
+        db_table = 'Luokittelemattomat'
