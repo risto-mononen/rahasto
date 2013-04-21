@@ -6,6 +6,7 @@ import urllib
 import tocsv
 from cStringIO import StringIO
 import sys
+from subprocess import call
 
 fund_type = dict(
     Hedgerahastot=4,
@@ -35,15 +36,20 @@ def download_all(funds):
         html_page = download(typeid, fname + '.html')
         store(html_page, fname + '.html')
         print >> sys.stderr, 'parse csv ', name
-        stdout = sys.stdout
-        sys.stdout = csv = StringIO()
-        ret += tocsv.parse_string(html_page)
-        sys.stdout = stdout
-        with open(name + '.csv', 'w') as out:
-            out.write(csv.getvalue())
-        csv.close()
-        # TODO: mysqlimport name.csv
+        ret, csvfile = parse(html_page, name)
+        call(["mysqlimport", csvfile])
     return ret
+
+def parse(html, name):
+    stdout = sys.stdout
+    sys.stdout = StringIO()
+    ret = tocsv.parse_string(html)
+    csvfile = name + '.csv'
+    with open(csvfile, 'w') as out:
+        out.write(sys.stdout.getvalue())
+    sys.stdout.close()
+    sys.stdout = stdout
+    return ret, csvfile
 
 
 def main(argv=None):
