@@ -1,5 +1,5 @@
 """
-Django settings for rUI project.
+Django settings for rui project.
 
 For more information on this file, see
 https://docs.djangoproject.com/en/dev/topics/settings/
@@ -17,7 +17,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 # See https://docs.djangoproject.com/en/dev/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'y&ujq0#9s5gd_xxp5!7_yehc)8$(@v-*16ak&0u)5ga%ytn490'
+SECRET_KEY = '#+d(9rz0=d*xwwa+)7!g7)l(h-c=fr5voej25^q_*l1z6ht)=w'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -48,9 +48,9 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'rUI.urls'
+ROOT_URLCONF = 'rui.urls'
 
-WSGI_APPLICATION = 'rUI.wsgi.application'
+WSGI_APPLICATION = 'rui.wsgi.application'
 
 
 # Database
