@@ -1,3 +1,3 @@
 rahasto
 =======
-Lataa viimeisimmät rahastokurssit.
+Lataa viimeisimmät kurssit.
