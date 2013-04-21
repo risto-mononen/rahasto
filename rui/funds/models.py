@@ -100,7 +100,8 @@ from django.db import models
 #         managed = False
 #         db_table = 'django_session'
 
-class RahastotBase(models.Model):
+
+class Hedgerahastot(models.Model):
     rahasto = models.CharField(max_length=255, blank=True)
     rating = models.CharField(max_length=255, blank=True)
     valuutta = models.CharField(max_length=255, blank=True)
@@ -113,23 +114,69 @@ class RahastotBase(models.Model):
     pvm = models.CharField(max_length=255, blank=True)
     def __unicode__(self):
         return unicode(self.id)
-
-class Hedgerahastot(RahastotBase):
     class Meta:
         db_table = 'Hedgerahastot'
 
-class Korkorahastot(RahastotBase):
+class Korkorahastot(models.Model):
+    rahasto = models.CharField(max_length=255, blank=True)
+    rating = models.CharField(max_length=255, blank=True)
+    valuutta = models.CharField(max_length=255, blank=True)
+    arvo = models.DecimalField(max_digits=21, decimal_places=4, blank=True, null=True)
+    pv1 = models.DecimalField(max_digits=21, decimal_places=4, blank=True, null=True)
+    kk3 = models.DecimalField(max_digits=21, decimal_places=4, blank=True, null=True)
+    kk6 = models.DecimalField(max_digits=21, decimal_places=4, blank=True, null=True)
+    v1 = models.DecimalField(max_digits=21, decimal_places=4, blank=True, null=True)
+    v3 = models.DecimalField(max_digits=21, decimal_places=4, blank=True, null=True)
+    pvm = models.CharField(max_length=255, blank=True)
+    def __unicode__(self):
+        return unicode(self.id)
     class Meta:
         db_table = 'Korkorahastot'
 
-class Osakerahastot(RahastotBase):
+class Osakerahastot(models.Model):
+    rahasto = models.CharField(max_length=255, blank=True)
+    rating = models.CharField(max_length=255, blank=True)
+    valuutta = models.CharField(max_length=255, blank=True)
+    arvo = models.DecimalField(max_digits=21, decimal_places=4, blank=True, null=True)
+    pv1 = models.DecimalField(max_digits=21, decimal_places=4, blank=True, null=True)
+    kk3 = models.DecimalField(max_digits=21, decimal_places=4, blank=True, null=True)
+    kk6 = models.DecimalField(max_digits=21, decimal_places=4, blank=True, null=True)
+    v1 = models.DecimalField(max_digits=21, decimal_places=4, blank=True, null=True)
+    v3 = models.DecimalField(max_digits=21, decimal_places=4, blank=True, null=True)
+    pvm = models.CharField(max_length=255, blank=True)
+    def __unicode__(self):
+        return unicode(self.id)
     class Meta:
         db_table = 'Osakerahastot'
 
-class Yhdistelmarahastot(RahastotBase):
+class Yhdistelmarahastot(models.Model):
+    rahasto = models.CharField(max_length=255, blank=True)
+    rating = models.CharField(max_length=255, blank=True)
+    valuutta = models.CharField(max_length=255, blank=True)
+    arvo = models.DecimalField(max_digits=21, decimal_places=4, blank=True, null=True)
+    pv1 = models.DecimalField(max_digits=21, decimal_places=4, blank=True, null=True)
+    kk3 = models.DecimalField(max_digits=21, decimal_places=4, blank=True, null=True)
+    kk6 = models.DecimalField(max_digits=21, decimal_places=4, blank=True, null=True)
+    v1 = models.DecimalField(max_digits=21, decimal_places=4, blank=True, null=True)
+    v3 = models.DecimalField(max_digits=21, decimal_places=4, blank=True, null=True)
+    pvm = models.CharField(max_length=255, blank=True)
+    def __unicode__(self):
+        return unicode(self.id)
     class Meta:
         db_table = 'Yhdistelmarahastot'
 
-class Luokittelemattomat(RahastotBase):
+class Luokittelemattomat(models.Model):
+    rahasto = models.CharField(max_length=255, blank=True)
+    rating = models.CharField(max_length=255, blank=True)
+    valuutta = models.CharField(max_length=255, blank=True)
+    arvo = models.DecimalField(max_digits=21, decimal_places=4, blank=True, null=True)
+    pv1 = models.DecimalField(max_digits=21, decimal_places=4, blank=True, null=True)
+    kk3 = models.DecimalField(max_digits=21, decimal_places=4, blank=True, null=True)
+    kk6 = models.DecimalField(max_digits=21, decimal_places=4, blank=True, null=True)
+    v1 = models.DecimalField(max_digits=21, decimal_places=4, blank=True, null=True)
+    v3 = models.DecimalField(max_digits=21, decimal_places=4, blank=True, null=True)
+    pvm = models.CharField(max_length=255, blank=True)
+    def __unicode__(self):
+        return unicode(self.id)
     class Meta:
         db_table = 'Luokittelemattomat'
