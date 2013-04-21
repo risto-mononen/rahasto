@@ -1,7 +1,7 @@
 from django.contrib import admin
-from funds.models import Hedgerahastot, Korkorahastot, Osakerahastot, Yhdistelmarahastot, Luokittelemattomat
+from funds.models import Hedge, Bond, Stock, Balanced, Unclassified
 
-all = [Hedgerahastot, Korkorahastot, Osakerahastot, Yhdistelmarahastot, Luokittelemattomat]
+all = [Hedge, Bond, Stock, Balanced, Unclassified]
 
 for model in all:
     admin.site.register(model)

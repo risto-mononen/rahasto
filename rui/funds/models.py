@@ -4,82 +4,82 @@ from django.db import models
 from django.db import models
 
 
-class Hedgerahastot(models.Model):
-    rahasto = models.CharField(max_length=255, blank=True)
+class Hedge(models.Model):
+    fund = models.CharField(max_length=255, blank=True)
     rating = models.CharField(max_length=255, blank=True)
-    valuutta = models.CharField(max_length=255, blank=True)
-    arvo = models.DecimalField(max_digits=21, decimal_places=4, blank=True, null=True)
-    pv1 = models.DecimalField(max_digits=21, decimal_places=4, blank=True, null=True)
-    kk3 = models.DecimalField(max_digits=21, decimal_places=4, blank=True, null=True)
-    kk6 = models.DecimalField(max_digits=21, decimal_places=4, blank=True, null=True)
-    v1 = models.DecimalField(max_digits=21, decimal_places=4, blank=True, null=True)
-    v3 = models.DecimalField(max_digits=21, decimal_places=4, blank=True, null=True)
-    pvm = models.CharField(max_length=255, blank=True)
+    currency = models.CharField(max_length=255, blank=True)
+    nav = models.DecimalField(max_digits=21, decimal_places=4, blank=True, null=True)
+    day1 = models.DecimalField(max_digits=21, decimal_places=4, blank=True, null=True)
+    month3 = models.DecimalField(max_digits=21, decimal_places=4, blank=True, null=True)
+    month6 = models.DecimalField(max_digits=21, decimal_places=4, blank=True, null=True)
+    year1 = models.DecimalField(max_digits=21, decimal_places=4, blank=True, null=True)
+    year3 = models.DecimalField(max_digits=21, decimal_places=4, blank=True, null=True)
+    date = models.CharField(max_length=255, blank=True)
     def __unicode__(self):
-        return self.rahasto
+        return self.fund
     class Meta:
-        db_table = 'Hedgerahastot'
+        db_table = 'Hedge'
 
-class Korkorahastot(models.Model):
-    rahasto = models.CharField(max_length=255, blank=True)
+class Bond(models.Model):
+    fund = models.CharField(max_length=255, blank=True)
     rating = models.CharField(max_length=255, blank=True)
-    valuutta = models.CharField(max_length=255, blank=True)
-    arvo = models.DecimalField(max_digits=21, decimal_places=4, blank=True, null=True)
-    pv1 = models.DecimalField(max_digits=21, decimal_places=4, blank=True, null=True)
-    kk3 = models.DecimalField(max_digits=21, decimal_places=4, blank=True, null=True)
-    kk6 = models.DecimalField(max_digits=21, decimal_places=4, blank=True, null=True)
-    v1 = models.DecimalField(max_digits=21, decimal_places=4, blank=True, null=True)
-    v3 = models.DecimalField(max_digits=21, decimal_places=4, blank=True, null=True)
-    pvm = models.CharField(max_length=255, blank=True)
+    currency = models.CharField(max_length=255, blank=True)
+    nav = models.DecimalField(max_digits=21, decimal_places=4, blank=True, null=True)
+    day1 = models.DecimalField(max_digits=21, decimal_places=4, blank=True, null=True)
+    month3 = models.DecimalField(max_digits=21, decimal_places=4, blank=True, null=True)
+    month6 = models.DecimalField(max_digits=21, decimal_places=4, blank=True, null=True)
+    year1 = models.DecimalField(max_digits=21, decimal_places=4, blank=True, null=True)
+    year3 = models.DecimalField(max_digits=21, decimal_places=4, blank=True, null=True)
+    date = models.CharField(max_length=255, blank=True)
     def __unicode__(self):
-        return self.rahasto
+        return self.fund
     class Meta:
-        db_table = 'Korkorahastot'
+        db_table = 'Bond'
 
-class Osakerahastot(models.Model):
-    rahasto = models.CharField(max_length=255, blank=True)
+class Stock(models.Model):
+    fund = models.CharField(max_length=255, blank=True)
     rating = models.CharField(max_length=255, blank=True)
-    valuutta = models.CharField(max_length=255, blank=True)
-    arvo = models.DecimalField(max_digits=21, decimal_places=4, blank=True, null=True)
-    pv1 = models.DecimalField(max_digits=21, decimal_places=4, blank=True, null=True)
-    kk3 = models.DecimalField(max_digits=21, decimal_places=4, blank=True, null=True)
-    kk6 = models.DecimalField(max_digits=21, decimal_places=4, blank=True, null=True)
-    v1 = models.DecimalField(max_digits=21, decimal_places=4, blank=True, null=True)
-    v3 = models.DecimalField(max_digits=21, decimal_places=4, blank=True, null=True)
-    pvm = models.CharField(max_length=255, blank=True)
+    currency = models.CharField(max_length=255, blank=True)
+    nav = models.DecimalField(max_digits=21, decimal_places=4, blank=True, null=True)
+    day1 = models.DecimalField(max_digits=21, decimal_places=4, blank=True, null=True)
+    month3 = models.DecimalField(max_digits=21, decimal_places=4, blank=True, null=True)
+    month6 = models.DecimalField(max_digits=21, decimal_places=4, blank=True, null=True)
+    year1 = models.DecimalField(max_digits=21, decimal_places=4, blank=True, null=True)
+    year3 = models.DecimalField(max_digits=21, decimal_places=4, blank=True, null=True)
+    date = models.CharField(max_length=255, blank=True)
     def __unicode__(self):
-        return self.rahasto
+        return self.fund
     class Meta:
-        db_table = 'Osakerahastot'
+        db_table = 'Stock'
 
-class Yhdistelmarahastot(models.Model):
-    rahasto = models.CharField(max_length=255, blank=True)
+class Balanced(models.Model):
+    fund = models.CharField(max_length=255, blank=True)
     rating = models.CharField(max_length=255, blank=True)
-    valuutta = models.CharField(max_length=255, blank=True)
-    arvo = models.DecimalField(max_digits=21, decimal_places=4, blank=True, null=True)
-    pv1 = models.DecimalField(max_digits=21, decimal_places=4, blank=True, null=True)
-    kk3 = models.DecimalField(max_digits=21, decimal_places=4, blank=True, null=True)
-    kk6 = models.DecimalField(max_digits=21, decimal_places=4, blank=True, null=True)
-    v1 = models.DecimalField(max_digits=21, decimal_places=4, blank=True, null=True)
-    v3 = models.DecimalField(max_digits=21, decimal_places=4, blank=True, null=True)
-    pvm = models.CharField(max_length=255, blank=True)
+    currency = models.CharField(max_length=255, blank=True)
+    nav = models.DecimalField(max_digits=21, decimal_places=4, blank=True, null=True)
+    day1 = models.DecimalField(max_digits=21, decimal_places=4, blank=True, null=True)
+    month3 = models.DecimalField(max_digits=21, decimal_places=4, blank=True, null=True)
+    month6 = models.DecimalField(max_digits=21, decimal_places=4, blank=True, null=True)
+    year1 = models.DecimalField(max_digits=21, decimal_places=4, blank=True, null=True)
+    year3 = models.DecimalField(max_digits=21, decimal_places=4, blank=True, null=True)
+    date = models.CharField(max_length=255, blank=True)
     def __unicode__(self):
-        return self.rahasto
+        return self.fund
     class Meta:
-        db_table = 'Yhdistelmarahastot'
+        db_table = 'Balanced'
 
-class Luokittelemattomat(models.Model):
-    rahasto = models.CharField(max_length=255, blank=True)
+class Unclassified(models.Model):
+    fund = models.CharField(max_length=255, blank=True)
     rating = models.CharField(max_length=255, blank=True)
-    valuutta = models.CharField(max_length=255, blank=True)
-    arvo = models.DecimalField(max_digits=21, decimal_places=4, blank=True, null=True)
-    pv1 = models.DecimalField(max_digits=21, decimal_places=4, blank=True, null=True)
-    kk3 = models.DecimalField(max_digits=21, decimal_places=4, blank=True, null=True)
-    kk6 = models.DecimalField(max_digits=21, decimal_places=4, blank=True, null=True)
-    v1 = models.DecimalField(max_digits=21, decimal_places=4, blank=True, null=True)
-    v3 = models.DecimalField(max_digits=21, decimal_places=4, blank=True, null=True)
-    pvm = models.CharField(max_length=255, blank=True)
+    currency = models.CharField(max_length=255, blank=True)
+    nav = models.DecimalField(max_digits=21, decimal_places=4, blank=True, null=True)
+    day1 = models.DecimalField(max_digits=21, decimal_places=4, blank=True, null=True)
+    month3 = models.DecimalField(max_digits=21, decimal_places=4, blank=True, null=True)
+    month6 = models.DecimalField(max_digits=21, decimal_places=4, blank=True, null=True)
+    year1 = models.DecimalField(max_digits=21, decimal_places=4, blank=True, null=True)
+    year3 = models.DecimalField(max_digits=21, decimal_places=4, blank=True, null=True)
+    date = models.CharField(max_length=255, blank=True)
     def __unicode__(self):
-        return self.rahasto
+        return self.fund
     class Meta:
-        db_table = 'Luokittelemattomat'
+        db_table = 'Unclassified'

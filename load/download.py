@@ -9,11 +9,11 @@ import sys
 from subprocess import call
 
 fund_type = dict(
-    Hedgerahastot=4,
-    Korkorahastot=3,
-    Luokittelemattomat=9,
-    Osakerahastot=1,
-    Yhdistelmarahastot=2)
+    Hedge=4,
+    Bond=3,
+    Unclassified=9,
+    Stock=1,
+    Balanced=2)
 
 def download(typeid, filename):
     template = 'http://www.kauppalehti.fi/5/i/porssi/rahastot/index.jsp?fcomid=&type={typeid}&class=&N%E4yt%E4.x=29&N%E4yt%E4.y=6&N%E4yt%E4=N%E4yt%E4'
