@@ -37,7 +37,7 @@ def download_all(funds):
         store(html_page, fname + '.html')
         print >> sys.stderr, 'parse csv ', name
         ret, csvfile = parse(html_page, name)
-        call(["mysqlimport", csvfile])
+        call(['./import.sh', csvfile])
     return ret
 
 def parse(html, name):

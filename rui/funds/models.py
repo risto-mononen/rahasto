@@ -113,4 +113,6 @@ class Hedgerahastot(models.Model):
     pvm = models.CharField(max_length=255, blank=True)
     class Meta:
         db_table = 'Hedgerahastot'
+    def __unicode__(self):
+        return self.rahasto
 
