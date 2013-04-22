@@ -14,9 +14,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.jboss.as.quickstarts.kitchensink.service;
+package fi.monoplan.fund.ui.service;
 
-import org.jboss.as.quickstarts.kitchensink.model.Member;
+import fi.monoplan.fund.ui.model.Member;
 
 import javax.ejb.Stateless;
 import javax.enterprise.event.Event;
