@@ -27,7 +27,7 @@ def store(data, filename):
     with open(filename, 'w') as outfile:
         outfile.write(data)
 
-def download_all(funds):
+def download_all(funds, import_script):
     TODAY = time.strftime('%Y%m%d')
     ret = 0
     for name, typeid in funds.items():
@@ -37,7 +37,7 @@ def download_all(funds):
         store(html_page, fname + '.html')
         print >> sys.stderr, 'parse csv ', name
         ret, csvfile = parse(html_page, name)
-        call(['./import.sh', csvfile])
+        call([import_script, csvfile])
     return ret
 
 def parse(html, name):
@@ -56,12 +56,15 @@ def main(argv=None):
     if argv is None:
         argv = sys.argv
     ret = 0
+    pathname = os.path.dirname(sys.argv[0])        
+    abspath = os.path.abspath(pathname)
+    full_path = os.path.join(abspath, 'import.sh')
     if len(argv) < 2:
-        ret = download_all(fund_type)
+        ret = download_all(fund_type, full_path)
     else:
         for arg in argv:
             with open(arg) as f:
-                ret += download_all(fund_type)
+                ret += download_all(fund_type, full_path)
     return ret
 
 
