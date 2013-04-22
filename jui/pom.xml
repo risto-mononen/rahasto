@@ -19,9 +19,9 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.jboss.as.quickstarts</groupId>
+    <groupId>fi.monoplan</groupId>
     <artifactId>fund-ui</artifactId>
-    <version>7.1.2-SNAPSHOT</version>
+    <version>0.1.2-SNAPSHOT</version>
     <packaging>war</packaging>
     <name>Fund UI</name>
     <description>A starter Java EE 6 webapp project for use on JBoss AS 7 / EAP 6, generated from the jboss-javaee6-webapp archetype</description>

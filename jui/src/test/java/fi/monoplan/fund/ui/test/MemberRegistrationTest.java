@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.jboss.as.quickstarts.fund.test;
+package fi.monoplan.fund.ui.test;
 
 import static org.junit.Assert.assertNotNull;
 
@@ -24,9 +24,9 @@ import javax.inject.Inject;
 
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
-import org.jboss.as.quickstarts.fund.model.Member;
-import org.jboss.as.quickstarts.fund.service.MemberRegistration;
-import org.jboss.as.quickstarts.fund.util.Resources;
+import fi.monoplan.fund.model.Member;
+import fi.monoplan.fund.service.MemberRegistration;
+import fi.monoplan.fund.util.Resources;
 import org.jboss.shrinkwrap.api.Archive;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.asset.EmptyAsset;
