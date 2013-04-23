@@ -16,7 +16,7 @@
  */
 package fi.monoplan.apps.funds.service;
 
-import fi.monoplan.apps.funds.model.Member;
+import fi.monoplan.apps.funds.model.Fund;
 
 import javax.ejb.Stateless;
 import javax.enterprise.event.Event;
@@ -35,11 +35,11 @@ public class MemberRegistration {
     private EntityManager em;
 
     @Inject
-    private Event<Member> memberEventSrc;
+    private Event<Fund> memberEventSrc;
 
-    public void register(Member member) throws Exception {
-        log.info("Registering " + member.getName());
-        em.persist(member);
-        memberEventSrc.fire(member);
+    public void register(Fund fund) throws Exception {
+        log.info("Registering " + fund.getName());
+        em.persist(fund);
+        memberEventSrc.fire(fund);
     }
 }

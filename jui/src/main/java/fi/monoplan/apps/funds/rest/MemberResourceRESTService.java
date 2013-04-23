@@ -17,9 +17,8 @@
 package fi.monoplan.apps.funds.rest;
 
 import fi.monoplan.apps.funds.data.MemberRepository;
-import fi.monoplan.apps.funds.model.Member;
+import fi.monoplan.apps.funds.model.Fund;
 import fi.monoplan.apps.funds.service.MemberRegistration;
-import fi.monoplan.apps.funds.model.Member;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -57,19 +56,19 @@ public class MemberResourceRESTService {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Member> listAllMembers() {
+    public List<Fund> listAllMembers() {
         return repository.findAllOrderedByName();
     }
 
     @GET
     @Path("/{id:[0-9][0-9]*}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Member lookupMemberById(@PathParam("id") long id) {
-        Member member = repository.findById(id);
-        if (member == null) {
+    public Fund lookupMemberById(@PathParam("id") long id) {
+        Fund fund = repository.findById(id);
+        if (fund == null) {
             throw new WebApplicationException(Response.Status.NOT_FOUND);
         }
-        return member;
+        return fund;
     }
 
     /**
@@ -79,15 +78,15 @@ public class MemberResourceRESTService {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response createMember(Member member) {
+    public Response createMember(Fund fund) {
 
         Response.ResponseBuilder builder = null;
 
         try {
             // Validates member using bean validation
-            validateMember(member);
+            validateMember(fund);
 
-            registration.register(member);
+            registration.register(fund);
 
             // Create an "ok" response
             builder = Response.ok();
@@ -119,20 +118,20 @@ public class MemberResourceRESTService {
      * exception so that it can be interpreted separately.
      * </p>
      *
-     * @param member Member to be validated
+     * @param fund Member to be validated
      * @throws ConstraintViolationException If Bean Validation errors exist
      * @throws ValidationException          If member with the same email already exists
      */
-    private void validateMember(Member member) throws ConstraintViolationException, ValidationException {
+    private void validateMember(Fund fund) throws ConstraintViolationException, ValidationException {
         // Create a bean validator and check for issues.
-        Set<ConstraintViolation<Member>> violations = validator.validate(member);
+        Set<ConstraintViolation<Fund>> violations = validator.validate(fund);
 
         if (!violations.isEmpty()) {
             throw new ConstraintViolationException(new HashSet<ConstraintViolation<?>>(violations));
         }
 
         // Check the uniqueness of the email address
-        if (emailAlreadyExists(member.getEmail())) {
+        if (emailAlreadyExists(fund.getEmail())) {
             throw new ValidationException("Unique Email Violation");
         }
     }
@@ -164,12 +163,12 @@ public class MemberResourceRESTService {
      * @return True if the email already exists, and false otherwise
      */
     public boolean emailAlreadyExists(String email) {
-        Member member = null;
+        Fund fund = null;
         try {
-            member = repository.findByEmail(email);
+            fund = repository.findByEmail(email);
         } catch (NoResultException e) {
             // ignore
         }
-        return member != null;
+        return fund != null;
     }
 }

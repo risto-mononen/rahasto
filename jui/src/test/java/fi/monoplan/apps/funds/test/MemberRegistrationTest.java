@@ -24,7 +24,7 @@ import javax.inject.Inject;
 
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
-import fi.monoplan.apps.funds.model.Member;
+import fi.monoplan.apps.funds.model.Fund;
 import fi.monoplan.apps.funds.service.MemberRegistration;
 import fi.monoplan.apps.funds.util.Resources;
 import org.jboss.shrinkwrap.api.Archive;
@@ -39,7 +39,7 @@ public class MemberRegistrationTest {
     @Deployment
     public static Archive<?> createTestArchive() {
         return ShrinkWrap.create(WebArchive.class, "test.war")
-                .addClasses(Member.class, MemberRegistration.class, Resources.class)
+                .addClasses(Fund.class, MemberRegistration.class, Resources.class)
                 .addAsResource("META-INF/test-persistence.xml", "META-INF/persistence.xml")
                 .addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml")
                 // Deploy our test datasource
@@ -54,12 +54,12 @@ public class MemberRegistrationTest {
 
     @Test
     public void testRegister() throws Exception {
-        Member newMember = new Member();
-        newMember.setName("Jane Doe");
-        newMember.setEmail("jane@mailinator.com");
-        memberRegistration.register(newMember);
-        assertNotNull(newMember.getId());
-        log.info(newMember.getName() + " was persisted with id " + newMember.getId());
+        Fund newFund = new Fund();
+        newFund.setName("Jane Doe");
+        newFund.setEmail("jane@mailinator.com");
+        memberRegistration.register(newFund);
+        assertNotNull(newFund.getId());
+        log.info(newFund.getName() + " was persisted with id " + newFund.getId());
     }
 
 }

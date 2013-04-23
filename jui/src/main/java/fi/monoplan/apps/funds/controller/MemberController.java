@@ -24,7 +24,7 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import fi.monoplan.apps.funds.model.Member;
+import fi.monoplan.apps.funds.model.Fund;
 import fi.monoplan.apps.funds.service.MemberRegistration;
 
 // The @Model stereotype is a convenience mechanism to make this a request-scoped bean that has an
@@ -42,16 +42,16 @@ public class MemberController {
 
     @Produces
     @Named
-    private Member newMember;
+    private Fund newFund;
 
     @PostConstruct
     public void initNewMember() {
-        newMember = new Member();
+        newFund = new Fund();
     }
 
     public void register() throws Exception {
         try {
-            memberRegistration.register(newMember);
+            memberRegistration.register(newFund);
             FacesMessage m = new FacesMessage(FacesMessage.SEVERITY_INFO, "Registered!", "Registration successful");
             facesContext.addMessage(null, m);
             initNewMember();
