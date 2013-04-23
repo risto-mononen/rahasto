@@ -41,3 +41,5 @@ data
 *.ipr
 *.iws
 target
+.classpath
+.settings
