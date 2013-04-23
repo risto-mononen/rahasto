@@ -47,11 +47,11 @@
             </p>
         </h:form>
         <h2>Jäsenet</h2>
-        <h:panelGroup rendered="#{empty members}">
+        <h:panelGroup rendered="#{empty funds}">
             <em>Ei rekisteröityjä jäseniä.</em>
         </h:panelGroup>
-        <h:dataTable var="_member" value="#{members}"
-            rendered="#{not empty members}"
+        <h:dataTable var="_member" value="#{funds}"
+            rendered="#{not empty funds}"
             styleClass="simpletablestyle">
             <h:column>
                 <f:facet name="header">Numero</f:facet>
@@ -68,11 +68,11 @@
             <h:column>
                 <f:facet name="header">REST URL (ohjelmoijille)</f:facet>
                 <a
-                    href="#{request.contextPath}/rest/members/#{_member.id}">/rest/members/#{_member.id}</a>
+                    href="#{request.contextPath}/rest/funds/#{_member.id}">/rest/funds/#{_member.id}</a>
             </h:column>
             <f:facet name="footer">
             REST URL kaikille jäsenille: <a
-                    href="#{request.contextPath}/rest/members">/rest/members</a>
+                    href="#{request.contextPath}/rest/funds">/rest/funds</a>
             </f:facet>
         </h:dataTable>
     </ui:define>

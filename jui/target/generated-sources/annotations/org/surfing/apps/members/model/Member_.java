@@ -1,4 +1,4 @@
-package org.surfing.apps.members.model;
+package fi.monoplan.apps.funds.model;
 
 import javax.annotation.Generated;
 import javax.persistence.metamodel.SingularAttribute;

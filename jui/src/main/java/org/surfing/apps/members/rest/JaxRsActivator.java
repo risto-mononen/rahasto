@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.surfing.apps.members.rest;
+package fi.monoplan.apps.funds.rest;
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;

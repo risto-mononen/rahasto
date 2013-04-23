@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.surfing.apps.members.controller;
+package fi.monoplan.apps.funds.controller;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Model;
@@ -24,8 +24,8 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import org.surfing.apps.members.model.Member;
-import org.surfing.apps.members.service.MemberRegistration;
+import fi.monoplan.apps.funds.model.Member;
+import fi.monoplan.apps.funds.service.MemberRegistration;
 
 // The @Model stereotype is a convenience mechanism to make this a request-scoped bean that has an
 // EL name

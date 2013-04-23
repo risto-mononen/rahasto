@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.surfing.apps.members.util;
+package fi.monoplan.apps.funds.util;
 
 import java.util.logging.Logger;
 

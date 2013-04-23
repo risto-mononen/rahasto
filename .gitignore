@@ -37,3 +37,7 @@ data
 *.html
 *.csv
 *~
+*.iml
+*.ipr
+*.iws
+target

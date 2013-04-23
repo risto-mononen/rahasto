@@ -14,9 +14,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.surfing.apps.members.service;
+package fi.monoplan.apps.funds.service;
 
-import org.surfing.apps.members.model.Member;
+import fi.monoplan.apps.funds.model.Member;
 
 import javax.ejb.Stateless;
 import javax.enterprise.event.Event;

@@ -1,2 +1,2 @@
-Surfing members
+Surfing funds
 ===============

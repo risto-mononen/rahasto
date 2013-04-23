@@ -14,12 +14,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.surfing.apps.members.rest;
+package fi.monoplan.apps.funds.rest;
 
-import org.surfing.apps.members.data.MemberRepository;
-import org.surfing.apps.members.model.Member;
-import org.surfing.apps.members.service.MemberRegistration;
-import org.surfing.apps.members.model.Member;
+import fi.monoplan.apps.funds.data.MemberRepository;
+import fi.monoplan.apps.funds.model.Member;
+import fi.monoplan.apps.funds.service.MemberRegistration;
+import fi.monoplan.apps.funds.model.Member;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -37,9 +37,9 @@ import java.util.logging.Logger;
 /**
  * JAX-RS Example
  * <p/>
- * This class produces a RESTful service to read/write the contents of the members table.
+ * This class produces a RESTful service to read/write the contents of the funds table.
  */
-@Path("/members")
+@Path("/funds")
 @RequestScoped
 public class MemberResourceRESTService {
 
