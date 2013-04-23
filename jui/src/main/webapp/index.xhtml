@@ -16,62 +16,38 @@
     limitations under the License.
 -->
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:ui="http://java.sun.com/jsf/facelets"
-    xmlns:f="http://java.sun.com/jsf/core"
-    xmlns:h="http://java.sun.com/jsf/html"
-    template="/WEB-INF/templates/default.xhtml">
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                template="/WEB-INF/templates/default.xhtml">
     <ui:define name="content">
-        <h1>Surfing ry jäsenlista</h1>
+        <h1>Funds</h1>
 
-        <h:form id="reg">
-            <h2>Liity postilistallemme</h2>
-            <h:panelGrid columns="3" columnClasses="titleCell">
-                <h:outputLabel for="name" value="Nimi:" />
-                <h:inputText id="name" value="#{newMember.name}" />
-                <h:message for="name" errorClass="invalid" />
-
-                <h:outputLabel for="email" value="Sähköposti:" />
-                <h:inputText id="email" value="#{newMember.email}" />
-                <h:message for="email" errorClass="invalid" />
-            </h:panelGrid>
-
-            <p>
-                <h:panelGrid columns="2">
-                    <h:commandButton id="register"
-                        action="#{memberController.register}"
-                        value="Rekisteröi" styleClass="register" />
-                    <h:messages styleClass="messages"
-                        errorClass="invalid" infoClass="valid"
-                        warnClass="warning" globalOnly="true" />
-                </h:panelGrid>
-            </p>
-        </h:form>
-        <h2>Jäsenet</h2>
         <h:panelGroup rendered="#{empty funds}">
-            <em>Ei rekisteröityjä jäseniä.</em>
+            <em>No data.</em>
         </h:panelGroup>
-        <h:dataTable var="_member" value="#{funds}"
-            rendered="#{not empty funds}"
-            styleClass="simpletablestyle">
+        <h:dataTable var="_fund" value="#{funds}"
+                     rendered="#{not empty funds}"
+                     styleClass="simpletablestyle">
             <h:column>
-                <f:facet name="header">Numero</f:facet>
-                #{_member.id}
+                <f:facet name="header">Id</f:facet>
+                #{_fund.id}
             </h:column>
             <h:column>
-                <f:facet name="header">Nimi</f:facet>
-                #{_member.name}
+                <f:facet name="header">Name</f:facet>
+                #{_fund.name}
             </h:column>
             <h:column>
-                <f:facet name="header">Sähköposti</f:facet>
-                #{_member.email}
+                <f:facet name="header">Email</f:facet>
+                #{_fund.email}
             </h:column>
             <h:column>
-                <f:facet name="header">REST URL (ohjelmoijille)</f:facet>
+                <f:facet name="header">REST URL</f:facet>
                 <a
-                    href="#{request.contextPath}/rest/funds/#{_member.id}">/rest/funds/#{_member.id}</a>
+                        href="#{request.contextPath}/rest/funds/#{_fund.id}">/rest/funds/#{_fund.id}</a>
             </h:column>
             <f:facet name="footer">
-            REST URL kaikille jäsenille: <a
+                REST URL for all members: <a
                     href="#{request.contextPath}/rest/funds">/rest/funds</a>
             </f:facet>
         </h:dataTable>

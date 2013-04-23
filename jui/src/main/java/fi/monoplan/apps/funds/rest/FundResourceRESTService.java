@@ -16,9 +16,9 @@
  */
 package fi.monoplan.apps.funds.rest;
 
-import fi.monoplan.apps.funds.data.MemberRepository;
+import fi.monoplan.apps.funds.data.FundRepository;
 import fi.monoplan.apps.funds.model.Fund;
-import fi.monoplan.apps.funds.service.MemberRegistration;
+import fi.monoplan.apps.funds.service.FundRegistration;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -40,7 +40,7 @@ import java.util.logging.Logger;
  */
 @Path("/funds")
 @RequestScoped
-public class MemberResourceRESTService {
+public class FundResourceRESTService {
 
     @Inject
     private Logger log;
@@ -49,21 +49,21 @@ public class MemberResourceRESTService {
     private Validator validator;
 
     @Inject
-    private MemberRepository repository;
+    private FundRepository repository;
 
     @Inject
-    MemberRegistration registration;
+    FundRegistration registration;
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Fund> listAllMembers() {
+    public List<Fund> listAllFunds() {
         return repository.findAllOrderedByName();
     }
 
     @GET
     @Path("/{id:[0-9][0-9]*}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Fund lookupMemberById(@PathParam("id") long id) {
+    public Fund lookupFundById(@PathParam("id") long id) {
         Fund fund = repository.findById(id);
         if (fund == null) {
             throw new WebApplicationException(Response.Status.NOT_FOUND);
@@ -72,19 +72,19 @@ public class MemberResourceRESTService {
     }
 
     /**
-     * Creates a new member from the values provided. Performs validation, and will return a JAX-RS response with either 200 ok,
+     * Creates a new fund from the values provided. Performs validation, and will return a JAX-RS response with either 200 ok,
      * or with a map of fields, and related errors.
      */
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response createMember(Fund fund) {
+    public Response createFund(Fund fund) {
 
         Response.ResponseBuilder builder = null;
 
         try {
-            // Validates member using bean validation
-            validateMember(fund);
+            // Validates fund using bean validation
+            validateFund(fund);
 
             registration.register(fund);
 
@@ -110,19 +110,19 @@ public class MemberResourceRESTService {
 
     /**
      * <p>
-     * Validates the given Member variable and throws validation exceptions based on the type of error. If the error is standard
+     * Validates the given Fund variable and throws validation exceptions based on the type of error. If the error is standard
      * bean validation errors then it will throw a ConstraintValidationException with the set of the constraints violated.
      * </p>
      * <p>
-     * If the error is caused because an existing member with the same email is registered it throws a regular validation
+     * If the error is caused because an existing fund with the same email is registered it throws a regular validation
      * exception so that it can be interpreted separately.
      * </p>
      *
-     * @param fund Member to be validated
+     * @param fund Fund to be validated
      * @throws ConstraintViolationException If Bean Validation errors exist
-     * @throws ValidationException          If member with the same email already exists
+     * @throws ValidationException          If fund with the same email already exists
      */
-    private void validateMember(Fund fund) throws ConstraintViolationException, ValidationException {
+    private void validateFund(Fund fund) throws ConstraintViolationException, ValidationException {
         // Create a bean validator and check for issues.
         Set<ConstraintViolation<Fund>> violations = validator.validate(fund);
 
@@ -156,8 +156,8 @@ public class MemberResourceRESTService {
     }
 
     /**
-     * Checks if a member with the same email address is already registered. This is the only way to easily capture the
-     * "@UniqueConstraint(columnNames = "email")" constraint from the Member class.
+     * Checks if a fund with the same email address is already registered. This is the only way to easily capture the
+     * "@UniqueConstraint(columnNames = "email")" constraint from the Fund class.
      *
      * @param email The email to check
      * @return True if the email already exists, and false otherwise

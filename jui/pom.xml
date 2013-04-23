@@ -9,7 +9,7 @@
     <version>0.1.3-SNAPSHOT</version>
     <packaging>war</packaging>
     <name>Monoplan apps: Funds</name>
-    <description>Member database</description>
+    <description>Fund database</description>
 
     <url>http://www.monoplan.fi</url>
     <licenses>

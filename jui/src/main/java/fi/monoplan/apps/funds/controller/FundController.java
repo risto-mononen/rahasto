@@ -25,36 +25,36 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import fi.monoplan.apps.funds.model.Fund;
-import fi.monoplan.apps.funds.service.MemberRegistration;
+import fi.monoplan.apps.funds.service.FundRegistration;
 
 // The @Model stereotype is a convenience mechanism to make this a request-scoped bean that has an
 // EL name
 // Read more about the @Model stereotype in this FAQ:
 // http://sfwk.org/Documentation/WhatIsThePurposeOfTheModelAnnotation
 @Model
-public class MemberController {
+public class FundController {
 
     @Inject
     private FacesContext facesContext;
 
     @Inject
-    private MemberRegistration memberRegistration;
+    private FundRegistration fundRegistration;
 
     @Produces
     @Named
     private Fund newFund;
 
     @PostConstruct
-    public void initNewMember() {
+    public void initNewFund() {
         newFund = new Fund();
     }
 
     public void register() throws Exception {
         try {
-            memberRegistration.register(newFund);
+            fundRegistration.register(newFund);
             FacesMessage m = new FacesMessage(FacesMessage.SEVERITY_INFO, "Registered!", "Registration successful");
             facesContext.addMessage(null, m);
-            initNewMember();
+            initNewFund();
         } catch (Exception e) {
             String errorMessage = getRootErrorMessage(e);
             FacesMessage m = new FacesMessage(FacesMessage.SEVERITY_ERROR, errorMessage, "Registration unsuccessful");

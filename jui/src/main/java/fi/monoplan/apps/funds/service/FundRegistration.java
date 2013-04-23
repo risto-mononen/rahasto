@@ -26,7 +26,7 @@ import java.util.logging.Logger;
 
 // The @Stateless annotation eliminates the need for manual transaction demarcation
 @Stateless
-public class MemberRegistration {
+public class FundRegistration {
 
     @Inject
     private Logger log;
@@ -35,11 +35,11 @@ public class MemberRegistration {
     private EntityManager em;
 
     @Inject
-    private Event<Fund> memberEventSrc;
+    private Event<Fund> fundEventSrc;
 
     public void register(Fund fund) throws Exception {
         log.info("Registering " + fund.getName());
         em.persist(fund);
-        memberEventSrc.fire(fund);
+        fundEventSrc.fire(fund);
     }
 }

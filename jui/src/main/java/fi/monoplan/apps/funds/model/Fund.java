@@ -36,25 +36,14 @@ import org.hibernate.validator.constraints.NotEmpty;
 @SuppressWarnings("serial")
 @Entity
 @XmlRootElement
-@Table(uniqueConstraints = @UniqueConstraint(columnNames = "email"))
 public class Fund implements Serializable {
 
     @Id
     @GeneratedValue
     private Long id;
 
-    @NotNull
-    @Pattern(regexp = "[^0-9]*", message = "Must not contain numbers")
     private String name;
-
-    @NotNull
-    @NotEmpty
-    @Email
     private String email;
-
-    @Size(min = 10, max = 12)
-    @Digits(fraction = 0, integer = 12)
-    @Column(name = "phone_number")
     private String phoneNumber;
 
     public Long getId() {
