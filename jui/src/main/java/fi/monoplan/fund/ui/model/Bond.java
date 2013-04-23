@@ -18,9 +18,13 @@ public class Bond implements Serializable {
 	@GeneratedValue
 	private Long id;
 
+	@Column(columnDefinition = "VARCHAR(255)")
 	private String fund;
+	@Column(columnDefinition = "VARCHAR(255)")
 	private String rating;
+	@Column(columnDefinition = "VARCHAR(255)")
 	private String currency;
+	
 	@Column(columnDefinition = "DECIMAL(12,4)")
 	private BigDecimal nav;
 	@Column(columnDefinition = "DECIMAL(12,4)")
@@ -33,6 +37,8 @@ public class Bond implements Serializable {
 	private BigDecimal year1;
 	@Column(columnDefinition = "DECIMAL(12,4)")
 	private BigDecimal year3;
+
+	@Column(columnDefinition = "VARCHAR(255)")
 	private String date;
 
 	public Long getId() {
