@@ -16,7 +16,7 @@ class Hedge(models.Model):
     year3 = models.DecimalField(max_digits=21, decimal_places=4, blank=True, null=True)
     date = models.CharField(max_length=255, blank=True)
     def __unicode__(self):
-        return self.fund
+        return fund_unicode(self)
     class Meta:
         db_table = 'Hedge'
 
@@ -32,7 +32,7 @@ class Bond(models.Model):
     year3 = models.DecimalField(max_digits=21, decimal_places=4, blank=True, null=True)
     date = models.CharField(max_length=255, blank=True)
     def __unicode__(self):
-        return self.fund
+        return fund_unicode(self)
     class Meta:
         db_table = 'Bond'
 
@@ -48,7 +48,7 @@ class Stock(models.Model):
     year3 = models.DecimalField(max_digits=21, decimal_places=4, blank=True, null=True)
     date = models.CharField(max_length=255, blank=True)
     def __unicode__(self):
-        return self.fund
+        return fund_unicode(self)
     class Meta:
         db_table = 'Stock'
 
@@ -64,7 +64,7 @@ class Balanced(models.Model):
     year3 = models.DecimalField(max_digits=21, decimal_places=4, blank=True, null=True)
     date = models.CharField(max_length=255, blank=True)
     def __unicode__(self):
-        return self.fund
+        return fund_unicode(self)
     class Meta:
         db_table = 'Balanced'
 
@@ -80,6 +80,12 @@ class Unclassified(models.Model):
     year3 = models.DecimalField(max_digits=21, decimal_places=4, blank=True, null=True)
     date = models.CharField(max_length=255, blank=True)
     def __unicode__(self):
-        return self.fund
+        return fund_unicode(self)
     class Meta:
         db_table = 'Unclassified'
+
+def fund_unicode(obj):
+    return reduce(lambda x, y: str(x)+'\t|\t'+str(y),
+                  (obj.fund, obj.rating, obj.currency,
+                   obj.nav, obj.day1, obj.month3, obj.month6,
+                   obj.year1, obj.year3, obj.date))
